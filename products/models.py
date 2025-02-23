@@ -24,6 +24,17 @@ class Product(models.Model):
     
     def __str__(self) -> str:
         return self.name
-    def get_absolute_url(self):
-        return reverse('products:product_detail', kwargs={'id':self.id, 'slug':self.slug})
     
+    def get_absolute_url(self):
+        """
+        Returns the absolute URL for the Product instance.
+        
+        This method uses the 'reverse' function to generate a URL that corresponds
+        to the 'product_detail' view. The URL pattern expects two keyword arguments:
+        'id' and 'slug', which are provided by the Product instance's 'id' and 'slug'
+        attributes.
+
+        Returns:
+            str: The absolute URL for the Product instance.
+        """
+        return reverse('products:product_detail', kwargs={'id': self.id, 'slug': self.slug})
